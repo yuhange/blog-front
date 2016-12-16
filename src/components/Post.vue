@@ -9,8 +9,8 @@
     </div>
 
     <div v-if="post" class="container">
-    	<div class="row">
-    		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+    	<!-- <div class="row"> -->
+    		<!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> -->
     			<div class="post">
     				<div class="head">
     					<div class="title">
@@ -31,8 +31,8 @@
     				<hr>
     				<div v-html="post.content" class="content">
     				</div>
-    			</div>
-    		</div>
+    			<!-- </div> -->
+    		<!-- </div> -->
     	</div>
       
     </div>
