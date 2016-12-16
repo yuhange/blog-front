@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import RightBar from './components/RightBar.vue'
+import RightBar from './components/Rightbar'
 import MyTitle from './components/MyTitle'
 export default {
   name: 'app',
