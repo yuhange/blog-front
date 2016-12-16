@@ -123,9 +123,6 @@ p{
   float: left;
   margin: 3px;
 }
-/*.tag:before {
-  content: url(../assets/tag.png);
-}*/
 .categories {
   text-align: left;
   /*padding: 10px;*/
@@ -141,7 +138,4 @@ p{
   float: left;
   margin: 3px;
 }
-/*.catgy-box:before {
-  content: url(../assets/category.png);
-}*/
 </style>
