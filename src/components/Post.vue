@@ -75,7 +75,7 @@ export default {
 	      this.loading = true
 	      this.$http.get(this.apiUrl).then((response) => {
 	      			this.post = response.body.data
-              console.log(this.post.content)
+              // console.log(this.post.content)
 	      			var marked = require('marked');
               marked.setOptions({
                 renderer: new marked.Renderer(),
@@ -174,7 +174,6 @@ export default {
 }
 h1, h2{
   text-align: left;
-  font-family: 'Josefin Sans', sans-serif;
   color: #92ABA7;
 }
 .post{

@@ -19,6 +19,7 @@
         </div>
         <div class="back-top" v-on:click="backTop()">
           <!-- <a  >返回顶部</a>  -->
+          返回顶部
         </div> 
       </div>
    </div>
@@ -44,11 +45,19 @@ export default {
 
 <style>
 #app {
-  background: url(./assets/stucco.png) repeat top left;
+  /*background: url(./assets/stucco.png) repeat top left;*/
+  background: #eee;
   font-family: cursive, "黑体", Verdana, Helvetica, serif, sans-serif, fantasy;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+}
+h1, h2{
+  /*text-align: left;*/
+  color: #92ABA7;
+}
+hr {
+  border: 0.5px dashed #aaa;
 }
 p::-moz-selection {
   background: #92ABA7; 
@@ -97,7 +106,7 @@ p::selection {
 }
 
 .back-top {
-  background: url(./assets/back-top.png) no-repeat;
+  /*background: url(./assets/back-top.png) no-repeat;*/
   width:60px; 
   height:50px; 
   position:fixed; 
@@ -120,7 +129,7 @@ p::selection {
     top: 0;
     left: 0;
     border: solid 1px #aaa;
-    background: #fff url(./assets/menu.png) no-repeat 10px 11px;
+    /*background: #fff url(./assets/menu.png) no-repeat 10px 11px;*/
     border-radius: 5px;
     box-shadow: 0 1px 2px rgba(0,0,0,.3);
   }
@@ -150,7 +159,7 @@ p::selection {
     margin: 0 0 5px;
   }
   .nav ul:hover .router-link-active {
-    background: url(./assets/check.png) no-repeat 10px 7px;
+    /*background: url(./assets/check.png) no-repeat 10px 7px;*/
   }
 
   /* right nav */
