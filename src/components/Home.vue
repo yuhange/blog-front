@@ -3,23 +3,17 @@
   <div class="loading" v-if="loading">
     Loading...
   </div>
-
   <div v-if="error" class="error">
     {{ error }}
   </div>
-
-   <div class="container">
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <ul v-for="index in totalPage" id="pagination-flickr">
-            <!-- <li v-if="showPre" class="previous-off">«Previous</li> -->
-            <!-- <li class="active">1</li> -->
-            <li v-on:click="getPage(index)"><a v-if="index<8 || index>totalPage-2" href="#">{{index}}</li>
-            <!-- <li v-if="showNext" class="next"><a href="?page=2">Next »</a></li> -->
-          </ul>
-        </div>
-      </div>
-   </div>
+  <div class="container">
+    <ul v-for="index in totalPage" id="pagination-flickr">
+      <!-- <li v-if="showPre" class="previous-off">«Previous</li> -->
+      <!-- <li class="active">1</li> -->
+      <li v-on:click="getPage(index)"><a v-if="index<8 || index>totalPage-2" href="#">{{index}}</li>
+      <!-- <li v-if="showNext" class="next"><a href="?page=2">Next »</a></li> -->
+    </ul>
+  </div>
   <div v-infinite-scroll="loadMore" infinite-scroll-distance="20">
     <div  v-for='post in posts' class="brief">
       <h3 class="post-head"><router-link :to="{name: 'post', params:{id:post.id}}" >{{post.title}}</router-link></h3>
@@ -32,9 +26,13 @@
 </template>
 
 <script>
+import Rightbar from './Rightbar'
 // import apiUrl from '../constant.js'
 export default {
   name: 'home',
+  components: {
+    Rightbar
+  },
   currentPage: 1,
   data(){
     return {

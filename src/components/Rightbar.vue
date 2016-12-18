@@ -49,32 +49,32 @@ export default {
   },
   methods: {
     fetchTags() {
-      this.error = this.categories = null
-          this.loading = true
-          this.$http.get(this.apiUrl+'tags').then((response) => {
-                this.loading = false
-                this.tags = response.body.tags
-                // console.log(response.body.post)
-            })
-            .catch(function(response) {
-                this.loading = false
-                this.error = 'Ah! Nothing!'
-                // console.log(response)
-            })
+      this.error = this.tags = null
+      this.loading = true
+      this.$http.get(this.apiUrl+'tags').then((response) => {
+            this.loading = false
+            this.tags = response.body.data
+            // console.log(response.body.post)
+        })
+        .catch(function(response) {
+            this.loading = false
+            this.error = 'Ah! Nothing!'
+            // console.log(response)
+        })
     },
     fetchCategories() {
       this.error = this.categories = null
-          this.loading = true
-          this.$http.get(this.apiUrl+'categories').then((response) => {
-                this.loading = false
-                this.categories = response.body.categories
-                // console.log(response.body.post)
-            })
-            .catch(function(response) {
-                this.loading = false
-                this.error = 'Ah! Nothing!'
-                // console.log(response)
-            })
+      this.loading = true
+      this.$http.get(this.apiUrl+'categories').then((response) => {
+            this.loading = false
+            this.categories = response.body.data
+            // console.log(response.body.post)
+        })
+        .catch(function(response) {
+            this.loading = false
+            this.error = 'Ah! Nothing!'
+            // console.log(response)
+        })
     }
   }
 }
