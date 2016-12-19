@@ -20,6 +20,7 @@
 </template>
 
 <script>
+// import apiUrl from '../constant.js'
 export default {
 	name: 'categories',
 	data () {
@@ -28,7 +29,7 @@ export default {
 	      post: null,
 	      error: null,
 	      categories: [], 
-        	apiUrl: 'http://localhost:8083/categories'
+          apiUrl: "https://blog-back.herokuapp.com/"
 	    }
   	},
   	created () {
@@ -41,7 +42,7 @@ export default {
 	    fetchData () {
 	      this.error = this.categories = null
 	      this.loading = true
-	      this.$http.get(this.apiUrl).then((response) => {
+	      this.$http.get(this.apiUrl+'categories').then((response) => {
 	      			this.categories = response.body.data
 	      			this.loading = false
 	      			this.error = false
