@@ -39,7 +39,7 @@ export default {
       posts: [],
       error: null,
       loading: null,
-      apiUrl: 'https://cnodejs.org/api/v1/',
+      apiUrl: 'https://blog-back.herokuapp.com/',
       showPre: false,
       showLast: true,
       showFirst: false,
@@ -74,7 +74,7 @@ export default {
     fetchData (currentPage) {
       this.error = this.posts = null
       this.loading = true
-      this.$http.get(this.apiUrl+'topics?page='+currentPage+'&limit=20&mdrender=true&tab=share').then((response) => {
+      this.$http.get(this.apiUrl).then((response) => {
               this.loading = false
               this.posts = response.body.data
               // console.log(response.body.post)
