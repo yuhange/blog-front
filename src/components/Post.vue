@@ -59,7 +59,7 @@ export default {
 	      	tags: [],
 	      	category: ''
 	      },
-	      apiUrl: 'https://cnodejs.org/api/v1/topic/'+this.$route.params.id+'?mdrender=false' 
+	      apiUrl: 'https://blog-back.herokuapp.com/post/'+this.$route.params.id
         // apiUrl: 'http://localhost:8083/post/1'
 	    }
   	},
