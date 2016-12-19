@@ -28,7 +28,7 @@ export default {
 	      post: null,
 	      error: null,
 	      tags: [], 
-          apiUrl: 'http://localhost:8083/tags'
+          apiUrl: 'https://blog-back.herokuapp.com/tags'
 	    }
   	},
   	created () {

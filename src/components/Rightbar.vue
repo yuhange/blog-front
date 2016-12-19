@@ -34,7 +34,7 @@ export default {
     return {
       error: null,
         loading: null,
-        apiUrl: 'http://localhost:8083/',
+        apiUrl: 'https://blog-back.herokuapp.com/',
         tags : [],
         categories: []
     }
