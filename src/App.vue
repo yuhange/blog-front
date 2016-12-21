@@ -12,9 +12,7 @@ export default {
     Front
   },
   methods: {
-    backTop() {
-      document.documentElement.scrollTop = document.body.scrollTop =0;
-    }
+    
   }
 }
 </script>

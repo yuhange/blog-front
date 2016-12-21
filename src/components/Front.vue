@@ -57,6 +57,9 @@ export default {
       '$route': 'fetchData'
   },
   methods: {
+    backTop() {
+      document.documentElement.scrollTop = document.body.scrollTop =0;
+    },
     loadMore() {
       //须替换
       var post = {

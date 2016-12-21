@@ -3,7 +3,8 @@ import App from './App'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import infiniteScroll from 'vue-infinite-scroll'
-import marked from 'marked' 
+import marked from 'marked'
+import store from './store'
 import Front from './components/Front'
 import Home from './components/Home'
 import Archive from './components/Archive'
@@ -56,9 +57,8 @@ const router = new VueRouter ({
 		},
 	]
 })
-/* eslint-disable no-new */
 new Vue({
-  // template: '<App/>',
-  router: router,
+  router,
+  store,
   render: h => h(App)
 }).$mount("#app")

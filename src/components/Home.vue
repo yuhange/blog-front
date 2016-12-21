@@ -1,11 +1,5 @@
 <template>
 <div>
-  <div class="loading" v-if="loading">
-    Loading...
-  </div>
-  <div v-if="error" class="error">
-    {{ error }}
-  </div>
   <div class="container">
     <ul v-for="index in totalPage" id="pagination-flickr">
       <!-- <li v-if="showPre" class="previous-off">«Previous</li> -->
@@ -13,6 +7,12 @@
       <li v-on:click="getPage(index)"><a v-if="index<8 || index>totalPage-2" href="#">{{index}}</li>
       <!-- <li v-if="showNext" class="next"><a href="?page=2">Next »</a></li> -->
     </ul>
+  </div>
+  <div class="loading" v-if="loading">
+    Loading...
+  </div>
+  <div v-if="error" class="error">
+    {{ error }}
   </div>
   <div v-infinite-scroll="loadMore" infinite-scroll-distance="20">
     <div  v-for='post in posts' class="brief">
@@ -27,7 +27,7 @@
 
 <script>
 import Rightbar from './Rightbar'
-// import apiUrl from '../constant.js'
+import apiUrl from '../constant.js'
 export default {
   name: 'home',
   components: {
@@ -39,7 +39,7 @@ export default {
       posts: [],
       error: null,
       loading: null,
-      apiUrl: 'https://blog-back.herokuapp.com/',
+      apiUrl: "https://blog-back.herokuapp.com/",
       showPre: false,
       showLast: true,
       showFirst: false,
