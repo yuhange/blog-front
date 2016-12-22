@@ -42,6 +42,7 @@
 
  <script>
 import 'highlight.js/styles/googlecode.css'
+import {API_ROOT} from '../constant'
 export default {
 
 	name: 'post',
@@ -59,7 +60,7 @@ export default {
 	      	tags: [],
 	      	category: ''
 	      },
-	      apiUrl: 'https://blog-back.herokuapp.com/post/'+this.$route.params.id
+	      // apiUrl: API_ROOT+'post/'+this.$route.params.id
         // apiUrl: 'http://localhost:8083/post/1'
 	    }
   	},
@@ -73,7 +74,7 @@ export default {
 	    fetchData () {
 	      this.error = this.post = null
 	      this.loading = true
-	      this.$http.get(this.apiUrl).then((response) => {
+	      this.$http.get(API_ROOT+'post/'+this.$route.params.id).then((response) => {
 	      			this.post = response.body.data
               // console.log(this.post.content)
 	      			var marked = require('marked');

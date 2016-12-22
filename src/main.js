@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
+import Vuex from 'vuex'
 import VueResource from 'vue-resource'
 import infiniteScroll from 'vue-infinite-scroll'
 import marked from 'marked'
@@ -22,6 +23,7 @@ import auth from './auth'
 Vue.use(VueRouter)
 Vue.use(VueResource)
 Vue.use(infiniteScroll)
+Vue.use(Vuex)
 
 function requireAuth (to, from, next) {
   if (!auth.loggedIn()) {

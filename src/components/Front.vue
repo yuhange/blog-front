@@ -36,61 +36,10 @@ export default {
   components: {
     Rightbar, Home, MyTitle
   },
-  currentPage: 1,
-  data(){
-    return {
-      posts: [],
-      error: null,
-      loading: null,
-      apiUrl: 'https://cnodejs.org/api/v1/',
-      showPre: false,
-      showLast: true,
-      showFirst: false,
-      showNext: true,
-      totalPage: 289
-    }
-  },
-  created () {
-      this.fetchData(this.currentPage)
-  },
-  watch: {
-      '$route': 'fetchData'
-  },
   methods: {
     backTop() {
       document.documentElement.scrollTop = document.body.scrollTop =0;
-    },
-    loadMore() {
-      //须替换
-      var post = {
-        id: 1,
-        title: '1',
-        content: '',
-        create_at:'',
-        author:'',
-        tags: [],
-        category: ''
-      };
-      if(this.posts != null) this.posts.push(post);
-    },
-    getPage(index) {
-      this.currentPage = index
-      this.fetchData(index)
-    },
-    fetchData (currentPage) {
-      this.error = this.posts = null
-      this.loading = true
-      this.$http.get(this.apiUrl+'topics?page='+currentPage+'&limit=20&mdrender=true&tab=share').then((response) => {
-              this.loading = false
-              this.posts = response.body.data
-              // console.log(response.body.post)
-          })
-          .catch(function(response) {
-              this.loading = false
-              this.error = 'Ah! Nothing!'
-              // console.log(response)
-          })
-      }
+    }
   }
 }
 </script>

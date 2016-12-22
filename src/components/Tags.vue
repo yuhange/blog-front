@@ -20,7 +20,7 @@
 </template>
 
 <script>
-// import apiUrl from '../constant.js'
+import {mapGetters} from 'vuex'
 export default {
 	name: 'tags',
 	data () {
@@ -28,32 +28,17 @@ export default {
 	      loading: false,
 	      post: null,
 	      error: null,
-	      tags: [], 
-          apiUrl: 'https://blog-back.herokuapp.com/'
 	    }
   	},
-  	created () {
-	    this.fetchData()
+  	computed: {
+  		...mapGetters({
+  			'tags':'tags'
+  		})
   	},
-	watch: {
-	    '$route': 'fetchData'
-	},
+  	created () {
+	    this.$store.dispatch('getTags')
+  	},
   	methods: {
-	    fetchData () {
-	      this.error = this.tags = null
-	      this.loading = true
-	      this.$http.get(this.apiUrl+'tags').then((response) => {
-	      			this.tags = response.body.data
-	      			this.loading = false
-	      			this.error = false
-                    // console.log(this.categories)
-                })
-                .catch(function(response) {
-                	this.loading = false
-	      			this.error = 'Nothing!'
-                    // console.log(response)
-                })
-            }
 	}
 }
 </script>

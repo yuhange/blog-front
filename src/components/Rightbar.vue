@@ -28,54 +28,27 @@
 </template>
 
 <script>
+import {API_ROOT} from '../constant'
+import {mapGetters} from 'vuex'
 export default {
   name: 'right-bar',
   data() {
     return {
       error: null,
         loading: null,
-        apiUrl: 'https://blog-back.herokuapp.com/',
-        tags : [],
-        categories: []
     }
+  },
+  computed: {
+    ...mapGetters({
+      'categories': 'categories',
+      'tags':'tags'
+    })
   },
   created () {
-      this.fetchTags(),
-      this.fetchCategories()
-  },
-  watch: {
-      '$route': 'fetchTags',
-      '$route': 'fetchCategories'
+      this.$store.dispatch('getTags'),
+      this.$store.dispatch('getCategories')
   },
   methods: {
-    fetchTags() {
-      this.error = this.tags = null
-      this.loading = true
-      this.$http.get(this.apiUrl+'tags').then((response) => {
-            this.loading = false
-            this.tags = response.body.data
-            // console.log(response.body.post)
-        })
-        .catch(function(response) {
-            this.loading = false
-            this.error = 'Ah! Nothing!'
-            // console.log(response)
-        })
-    },
-    fetchCategories() {
-      this.error = this.categories = null
-      this.loading = true
-      this.$http.get(this.apiUrl+'categories').then((response) => {
-            this.loading = false
-            this.categories = response.body.data
-            // console.log(response.body.post)
-        })
-        .catch(function(response) {
-            this.loading = false
-            this.error = 'Ah! Nothing!'
-            // console.log(response)
-        })
-    }
   }
 }
 </script>

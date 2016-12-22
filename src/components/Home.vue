@@ -27,7 +27,8 @@
 
 <script>
 import Rightbar from './Rightbar'
-import apiUrl from '../constant.js'
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'home',
   components: {
@@ -36,10 +37,9 @@ export default {
   currentPage: 1,
   data(){
     return {
-      posts: [],
       error: null,
       loading: null,
-      apiUrl: "https://blog-back.herokuapp.com/",
+      // apiUrl: "https://blog-back.herokuapp.com/",
       showPre: false,
       showLast: true,
       showFirst: false,
@@ -48,10 +48,12 @@ export default {
     }
   },
   created () {
-      this.fetchData(this.currentPage)
+    this.$store.dispatch('getPostList')
   },
-  watch: {
-      '$route': 'fetchData'
+  computed: {
+    ...mapGetters({
+      'posts': 'posts'
+    })
   },
   methods: {
     loadMore() {
@@ -69,22 +71,24 @@ export default {
     },
     getPage(index) {
       this.currentPage = index
-      this.fetchData(index)
+      this.getPostList(index)
     },
-    fetchData (currentPage) {
-      this.error = this.posts = null
-      this.loading = true
-      this.$http.get(this.apiUrl).then((response) => {
-              this.loading = false
-              this.posts = response.body.data
-              // console.log(response.body.post)
-          })
-          .catch(function(response) {
-              this.loading = false
-              this.error = 'Ah! Nothing!'
-              // console.log(response)
-          })
-      }
+
+    // getPostList () {
+
+    //   // this.error = this.posts = null
+    //   // this.loading = true
+    //   // this.$http.get(API_ROOT).then((response) => {
+    //   //         this.loading = false
+    //   //         this.posts = response.body.data
+    //   //         // console.log(response.body.post)
+    //   //     })
+    //   //     .catch(function(response) {
+    //   //         this.loading = false
+    //   //         this.error = 'Ah! Nothing!'
+    //   //     })
+      // this.$store.dispatch('getPostList')
+      // }
   }
 }
 </script>

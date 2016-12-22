@@ -20,7 +20,7 @@
 </template>
 
 <script>
-// import apiUrl from '../constant.js'
+import {mapGetters} from 'vuex'
 export default {
 	name: 'categories',
 	data () {
@@ -29,31 +29,19 @@ export default {
 	      post: null,
 	      error: null,
 	      categories: [], 
-          apiUrl: "https://blog-back.herokuapp.com/"
+          // apiUrl: "https://blog-back.herokuapp.com/"
 	    }
   	},
-  	created () {
-	    this.fetchData()
+  	computed: {
+  		...mapGetters({
+  			'categories': 'categories'
+  		})
   	},
-	watch: {
-	    '$route': 'fetchData'
+  	created () {
+		this.$store.dispatch('getCategories')
 	},
   	methods: {
-	    fetchData () {
-	      this.error = this.categories = null
-	      this.loading = true
-	      this.$http.get(this.apiUrl+'categories').then((response) => {
-	      			this.categories = response.body.data
-	      			this.loading = false
-	      			this.error = false
-                    // console.log(this.categories)
-                })
-                .catch(function(response) {
-                	this.loading = false
-	      			this.error = 'Nothing!'
-                    // console.log(response)
-                })
-            }
+	    
 	}
 }
 </script>
