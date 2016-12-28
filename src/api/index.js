@@ -12,4 +12,22 @@ export default {
   getTags: () => {
     return Vue.resource(API_ROOT+'tags').get()
   },
+  getQuestions: ()=> {
+  	return Vue.resource(API_ROOT+'leetcode').get()
+  },
+  getQuestion: (id)=> {
+  	return Vue.resource(API_ROOT+'leetcode/leetcode-question/'+id).get()
+  },
+  getTodos: () => {
+    return Vue.resource(API_ROOT+'todo').get()
+  },
+  getHistoryTodos: () => {
+    return Vue.resource(API_ROOT + 'todohistory').get()
+  },
+  getPoems: () => {
+  	return Vue.resource(API_ROOT + 'poems').get()
+  },
+  getPoem: (id) => {
+  	return Vue.resource(API_ROOT + 'poem/'+id).get()
+  }
 }

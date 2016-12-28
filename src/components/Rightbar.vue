@@ -4,14 +4,13 @@
     <h2>Most Recent</h2>   
   </div>
   <div class="box">
-    <h2><router-link to="/tags">TAGS</router-link></h2>   
-    <div class="tags">
-      <div  v-for='tag in tags' class="tag">
-        <!-- <h3 class="tag-head"> -->
-          <router-link :to="{name: 'tag', params:{id:tag.id}}" ><i class="fa fa-tag"></i>{{tag.name}}</router-link>
-        <!-- </h3> -->
+    <h2><router-link to="/home/questions">LEETCODE</router-link></h2>  <h2><router-link to="/home/todos">TO-DO-List</router-link></h2>
+    <h2><router-link to="/home/poems">诗词</router-link></h2>  
+    <!-- <div class="tags">
+      <div  v-for='question in showQuestions' class="tag">
+        <router-link :to="{name: 'question', params:{id:question.ques_id}}" ><i class="fa fa-tag"></i>{{question.ques_title}}</router-link>
       </div>
-    </div>
+    </div> -->
   </div>
   <div class="box">
     <h2><router-link to="/categories">CATEGORY</router-link></h2>  
@@ -28,7 +27,6 @@
 </template>
 
 <script>
-import {API_ROOT} from '../constant'
 import {mapGetters} from 'vuex'
 export default {
   name: 'right-bar',
@@ -41,11 +39,14 @@ export default {
   computed: {
     ...mapGetters({
       'categories': 'categories',
-      'tags':'tags'
-    })
+      // 'questions':'questions'
+    }),
+    // showQuestions() {
+    //   return this.questions.splice(0, 5)
+    // }
   },
   created () {
-      this.$store.dispatch('getTags'),
+      // this.$store.dispatch('getQuestions'),
       this.$store.dispatch('getCategories')
   },
   methods: {

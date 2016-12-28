@@ -70,39 +70,38 @@ export default {
 	watch: {
 	    '$route': 'fetchData'
 	},
-  	methods: {
-	    fetchData () {
-	      this.error = this.post = null
-	      this.loading = true
-	      this.$http.get(API_ROOT+'post/'+this.$route.params.id).then((response) => {
-	      			this.post = response.body.data
-              // console.log(this.post.content)
-	      			var marked = require('marked');
-              marked.setOptions({
-                renderer: new marked.Renderer(),
-                gfm: true,
-                tables: true,
-                breaks: false,
-                pedantic: false,
-                sanitize: true,
-                smartLists: true,
-                smartypants: false,
-                highlight: function (code) {
-                  return require('highlight.js').highlightAuto(code).value;
-                }
-              });
-	      			this.post.content = marked(this.post.content);
+  methods: {
+	  fetchData () {
+	    this.error = this.post = null
+	    this.loading = true
+	    this.$http.get(API_ROOT+'post/'+this.$route.params.id).then((response) => {
+	      this.post = response.body.data
+  			var marked = require('marked');
+        marked.setOptions({
+          renderer: new marked.Renderer(),
+          gfm: true,
+          tables: true,
+          breaks: false,
+          pedantic: false,
+          sanitize: true,
+          smartLists: true,
+          smartypants: false,
+          highlight: function (code) {
+            return require('highlight.js').highlightAuto(code).value;
+          }
+        });
+  			this.post.content = marked(this.post.content);
 					// console.log(marked(this.post.content));
-	      			this.loading = false
-	      			this.error = false
-                    // console.log(response.body.post)
-                })
-                .catch(function(response) {
-                	this.loading = false
-	      			    this.error = 'Nothing!'
-                    // console.log(response)
-                })
-            }
+			  this.loading = false
+			  this.error = false
+            // console.log(response.body.post)
+        })
+      .catch(function(response) {
+      	this.loading = false
+		    this.error = 'Nothing!'
+          // console.log(response)
+      })
+    }
 	}
 }
 </script>

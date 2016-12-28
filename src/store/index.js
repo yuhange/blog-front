@@ -5,6 +5,9 @@ import Vuex from 'vuex'
 import post from './module/post'
 import categories from './module/categories'
 import tags from './module/tags'
+import leetcode from './module/leetcode'
+import todos from './module/todos'
+import poem from './module/poem'
 
 Vue.use(Vuex)
 
@@ -12,6 +15,9 @@ export default new Vuex.Store({
 	modules: {
 		post,
 		categories,
-		tags
+		tags,
+		leetcode,
+		todos,
+		poem
 	},
 })

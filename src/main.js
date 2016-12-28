@@ -14,6 +14,11 @@ import Tags from './components/Tags'
 import Post from './components/Post'
 import CategoryPost from './components/CategoryPost'
 import TagPost from './components/TagPost'
+import Leetcode from './components/Leetcode'
+import Question from './components/Question'
+import Todos from './components/Todos'
+import Poems from './components/Poems'
+import Poem from './components/Poem'
 import Login from './components/Login.vue'
 import Editor from './components/auth-components/Editor'
 import Dashboard from './components/auth-components/Dashboard' 
@@ -48,7 +53,12 @@ const router = new VueRouter ({
 				{path: 'tags', component: Tags},
 				{path: 'post/:id', component: Post, name: 'post'},
 				{path: 'category/:id', component: CategoryPost, name:'category'},
-				{path: 'tag/:id', component: TagPost, name:'tag'},]
+				{path: 'tag/:id', component: TagPost, name:'tag'},
+				{path: 'questions', component: Leetcode},
+				{path: 'question/:id', name:'question', component: Question},
+				{path: 'todos', component: Todos},
+				{path: 'poems', component: Poems},
+				{path: 'poem/:id', name:'poem', component: Poem}]
 		},
 		{path: '/login', component: Login},
 		{path: '/dashboard', component: Dashboard, beforeEnter: requireAuth,
