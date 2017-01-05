@@ -6,6 +6,9 @@ export default {
   getPostList: () => {
     return Vue.resource(API_ROOT).get()
   },
+  getPostById: (id) => {
+  	return Vue.resource(API_ROOT+'post/'+id).get()
+  },
   getCategories: () => {
     return Vue.resource(API_ROOT+'categories').get()
   },

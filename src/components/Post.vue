@@ -17,8 +17,8 @@
     						<h1>{{post.title}}</h1>
     					</div>
     					<div class="info">
-    						<div class="author"><i class="fa fa-user"></i>{{post.author}}</div>
-    						<div class="date"><i class="fa fa-calendar"></i>{{post.create_at}}</div>
+    						<div class="author"><i class="fa fa-user"></i>admin</div>
+    						<div class="date"><i class="fa fa-calendar"></i>{{post.addTime}}</div>
     						<div class="category"><i class="fa fa-folder-o"></i>{{post.category}}</div>
     						<div class="tags">
     							<ul v-for="tag in post.tags">
@@ -43,33 +43,17 @@
  <script>
 import 'highlight.js/styles/googlecode.css'
 import {API_ROOT} from '../constant'
+import {mapGetters} from 'vuex'
 export default {
-
 	name: 'post',
-	data () {
-	    return {
-	      loading: false,
-	      post: null,
-	      error: null,
-	      post: {
-	      	id: 1,
-	      	title: '1',
-	      	content: '',
-	      	create_at:'',
-	      	author:'',
-	      	tags: [],
-	      	category: ''
-	      },
-	      // apiUrl: API_ROOT+'post/'+this.$route.params.id
-        // apiUrl: 'http://localhost:8083/post/1'
-	    }
-  	},
-  	created () {
-	    this.fetchData()
-  	},
-	watch: {
-	    '$route': 'fetchData'
-	},
+  computed: {
+    ...mapGetters({
+      post: 'post'
+    })
+  },
+  created(){
+    this.$store.dispatch('getPostById', this.$route.params.id)
+  },
   methods: {
 	  fetchData () {
 	    this.error = this.post = null

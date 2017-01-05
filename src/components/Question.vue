@@ -2,6 +2,7 @@
   <div class="question">
     <h1>{{question.ques_id}}. {{question.ques_title}}</h1>
     <div v-html="question.ques_content"></div>
+    <div v-html="question.solution"></div>
   </div>
 </template>
 

@@ -20,7 +20,7 @@ export default {
 <style>
 #app {
   /*background: url(./assets/stucco.png) repeat top left;*/
-  background: #eee;
+  /*background: #eee;*/
   font-family: cursive, "黑体", Verdana, Helvetica, serif, sans-serif, fantasy;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

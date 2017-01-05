@@ -24,6 +24,21 @@ const actions = {
   getQuestion({commit}, id) {
     api.getQuestion(id).then(response=>{
       var data = response.body.data
+      var marked = require('marked');
+      marked.setOptions({
+        renderer: new marked.Renderer(),
+        gfm: true,
+        tables: true,
+        breaks: false,
+        pedantic: false,
+        sanitize: true,
+        smartLists: true,
+        smartypants: false,
+        highlight: function (code) {
+          return require('highlight.js').highlightAuto(code).value;
+        }
+      });
+      data.solution = marked(data.solution);
       commit(types.REQUEST_QUESTION, {data})
     }, err=>{
       commit(types.REQUEST_QUESTION_FAILURE, {data})
